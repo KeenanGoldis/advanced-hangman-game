@@ -10,7 +10,7 @@ class App extends Component {
 	constructor(){
 		super();
 		this.state = {
-			wordToGuess: randomWords,
+			wordToGuess: randomWords(),
 			strikes:0,
 			guess:"",
 			correctGuesses:[],
@@ -18,19 +18,19 @@ class App extends Component {
 		};
 	}
   render() {
-		console.log(this.state.wordToGuess.length);
+		console.log("this is the length of wordToGuess",this.state.wordToGuess.length, this.state.wordToGuess);
 		let className = `strike-${this.state.strikes}`;
-		let spans = [<span>_</span>];
+		let spans = [];
 		let emptySpaces = () => {
-			for(let i = 0; i < 5; i++ ){
-				console.log([i]);
+			for(let i = 0; i < this.state.wordToGuess.length; i++ ){
+				spans.push(<span> _</span>);
+				console.log("this emptySpaces loop", [i]);
 			}
 
 		}
 
     return (
 			<div>
-				{console.log("this is my random word", this.state.wordToGuess())}
 				{emptySpaces()}
 
 				<div className="hangman-sprites">
